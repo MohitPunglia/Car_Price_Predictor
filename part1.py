@@ -30,3 +30,14 @@ car.info()
 car = car[car["year"].str.isnumeric()]
 car["year"] = car["year"].astype(int)
 # %%
+# %%
+car = car[car["Price"] != "Ask For Price"]
+
+# %%
+car["Price"].unique()
+
+# %%
+car["Price"] = car["Price"].str.replace(",", "").astype(int)
+
+# %%
+car.info()
