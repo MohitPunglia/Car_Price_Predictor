@@ -41,3 +41,40 @@ car["Price"] = car["Price"].str.replace(",", "").astype(int)
 
 # %%
 car.info()
+
+
+# %%
+car["kms_driven"] = car["kms_driven"].str.split(" ").str.get(0).str.replace(",", "")
+
+# %%
+car = car[car["kms_driven"].str.isnumeric()]
+
+# %%
+car.info()
+
+# %%
+car["kms_driven"] = car["kms_driven"].astype(int)
+
+# %%
+car.info()
+
+# %%
+car = car[~car["fuel_type"].isna()]
+
+# %%
+car.info()
+
+# %%
+car["name"] = car["name"].str.split(" ").str.slice(0, 3).str.join(" ")
+
+# %%
+car = car.reset_index(drop=True)
+
+# %%
+car
+
+# %%
+car.describe()
+
+# %%
+car.info()
