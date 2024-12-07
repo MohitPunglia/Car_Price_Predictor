@@ -78,3 +78,41 @@ car.describe()
 
 # %%
 car.info()
+
+# %%
+car[car['Price']>6e6]
+
+# %%
+car=car[car['Price']<6e6].reset_index(drop=True)
+
+# %%
+car
+
+# %%
+car.to_csv('cleaned_car.csv')
+
+# %% [markdown]
+# Extracting Training data
+
+# %%
+X=car[['name','company','year','kms_driven','fuel_type']]
+y=car['Price']
+
+
+# %%
+X
+
+# %%
+y
+
+# %% [markdown]
+# ## Training and Testing the data
+# 
+
+# %%
+!pip3 install scikit-learn
+
+# %%
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
